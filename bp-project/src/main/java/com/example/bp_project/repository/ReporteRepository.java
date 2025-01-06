@@ -22,9 +22,9 @@ public interface ReporteRepository extends JpaRepository<Movimiento, Long> {
             "m.monto AS Movimiento, " +
             "(m.saldo_disponible - m.monto) AS SaldoInicial, " +
             "m.saldo_disponible AS SaldoDisponible " +
-            "FROM Clientes c " +
-            "JOIN Cuentas cu ON c.id = cu.cliente_id " +
-            "JOIN Movimientos m ON cu.numero_cuenta = m.numero_cuenta " +
+            "FROM clientes c " +
+            "JOIN cuentas cu ON c.id = cu.cliente_id " +
+            "JOIN movimientos m ON cu.numero_cuenta = m.numero_cuenta " +
             "WHERE c.id = :clienteId " +
             "AND m.fecha BETWEEN :fromDate AND :toDate", nativeQuery = true)
     List<Map<String, Object>> generarReporte(@Param("clienteId") Long clienteId, @Param("fromDate") LocalDate fromDate, @Param("toDate") LocalDate toDate);

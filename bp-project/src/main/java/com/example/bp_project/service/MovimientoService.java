@@ -35,6 +35,10 @@ public class MovimientoService {
         Double saldo_disponible = 0.0;
 
         if(movimiento.getTipo_movimiento().equals("Retiro") ){
+
+            if(movimiento.getMonto() > saldo_inicial){
+                throw new RuntimeException("El saldo es insuficiente");
+            }
             movimiento.setMonto(movimiento.getMonto() * -1);
         }
 
@@ -64,6 +68,9 @@ public class MovimientoService {
         Double saldo_disponible = 0.0;
 
         if(movimiento.getTipo_movimiento().equals("Retiro") ){
+            if(movimiento.getMonto() > saldo_inicial){
+                throw new RuntimeException("El saldo es insuficiente");
+            }
             movimiento.setMonto(movimiento.getMonto() * -1);
         }
 
