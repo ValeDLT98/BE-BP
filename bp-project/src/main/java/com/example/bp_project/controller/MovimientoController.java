@@ -1,6 +1,5 @@
 package com.example.bp_project.controller;
 
-import com.example.bp_project.dto.MovimientoDTO;
 import com.example.bp_project.entity.Movimiento;
 import com.example.bp_project.service.MovimientoService;
 import org.springframework.http.HttpStatus;
@@ -23,7 +22,7 @@ public class MovimientoController {
     }
 
     @GetMapping
-    public List<MovimientoDTO> getMovimientos(){
+    public List<Movimiento> getMovimientos(){
         return movimientoService.getMovimientos();
     }
 

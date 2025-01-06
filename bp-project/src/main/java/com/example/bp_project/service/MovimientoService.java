@@ -1,13 +1,11 @@
 package com.example.bp_project.service;
 
-import com.example.bp_project.dto.MovimientoDTO;
 import com.example.bp_project.entity.Cuenta;
 import com.example.bp_project.entity.Movimiento;
 import com.example.bp_project.repository.CuentaRepository;
 import com.example.bp_project.repository.MovimientoRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,25 +20,9 @@ public class MovimientoService {
         this.cuentaRepository = cuentaRepository;
     }
 
-    public List<MovimientoDTO> getMovimientos(){
-        List<Movimiento> movimientos = movimientoRepository.findAll();
-        List<MovimientoDTO> movimientoDTOS = new ArrayList<>();
+    public List<Movimiento> getMovimientos(){
 
-        for(Movimiento mov : movimientos){
-            Long numero_cuenta = mov.getCuenta() != null ? mov.getCuenta().getNumero() : 0;
-
-            MovimientoDTO movimientoDTO = new MovimientoDTO(
-                    mov.getId(),
-                    mov.getTipo_movimiento(),
-                    mov.getMonto(),
-                    mov.getFecha(),
-                    mov.getSaldo_disponible(),
-                    numero_cuenta
-            );
-            movimientoDTOS.add(movimientoDTO);
-        }
-
-        return movimientoDTOS;
+        return movimientoRepository.findAll();
     }
 
 
